@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="account-form col-sm-11 col-md-11">
+    <form #accountForm>
+      <h3 class="title-header">Add Account</h3>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            <div class="input-group form-font input-margin">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-piggy-bank"></i></span>
+              <input class="form-control" pattern="[^0-9]+" maxlength="6" type="text" name="bsb" placeholder="BSB" value="" id="bsb" #bsb>
+              <span class="input-group-addon" style="display:hidden"><i class="glyphicon glyphicon-book"></i></span>
+              <input class="form-control" pattern="[^0-9]+" maxlength="9" type="text" name="acctNumber" placeholder="Account Number" value="" id="acctNumber" #acctNumber>
+          </div>
+        </div>
+      </div>
+      <div class="input-group form-font input-margin">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input class="form-control" type="text" name="name" placeholder="Account Name" value="" id="acName" #acName>
+      </div>
+      <div class="input-group form-font input-margin">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-tags"></i></span>
+        <input class="form-control" type="text" name="type" placeholder="Account Type" value="" id="type" #type>
+      </div>
+      <div class="input-group form-font input-margin">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+        <input class="form-control" type="number" name="balance" placeholder="Balance" value="" id="balance" #balance>
+      </div>
+      <div class="input-group form-font" style="align:right;width:100%">
+        <button class="btn btn-info addButton" type="button" name="button" (click)="_createAcc(bsb, acctNumber, acName, type, balance)">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

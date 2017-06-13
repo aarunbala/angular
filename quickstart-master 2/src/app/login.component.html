@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row logo">Bingo!</div>
+  <div class="row">
+    <div class="col-sm-4 col-md-4">
+      <account-form (account)="_createAcc($event)"></account-form>
+    </div>
+    <div class="col-sm-8 col-md-8" style="overflow:scroll;height:490px;">
+      <div class="accounts row" *ngFor="let account of _accounts; let idx=index" (click)="select(idx)">
+
+        <div class="col-sm-6 col-md-6">
+          <h4 class="number-font">{{account.number}}</h4>
+          <p>{{account.type}}</p>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <p class="p-balance">
+            <strong class="lead balance">{{"  $ " + account.balance}}</strong></p>
+            <p class="p-balance-text">Current Balance</p>
+        </div>
+
+        <div [ngClass]="{trxnsdisplay:account.selected}" class="trxinvisible">
+          <transactions [transactionsList]="account.transactions" (delete)="_removeTrx($event)"></transactions>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

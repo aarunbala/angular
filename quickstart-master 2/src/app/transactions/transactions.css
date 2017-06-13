@@ -1,0 +1,22 @@
+.transactions{
+  border-bottom: 1px solid #DDD;
+  background-color: #F1F1F1;
+  padding-top: 10px;
+}
+
+.tableTopMargin{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.table>tbody>tr>td{
+  vertical-align: middle;
+}
+.btn-small{
+  width: 15px;
+  height: 25px;
+  vertical-align: middle;
+}
+.borderBottom{
+  border-bottom: 1px solid #e26f05;
+}

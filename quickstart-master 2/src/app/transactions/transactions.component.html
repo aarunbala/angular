@@ -1,0 +1,12 @@
+<table class="table table-responsive tableTopMargin">
+  <tr class="active borderBottom">
+    <td>TransactionId</td><td>Date Time</td><td>Type</td><td>Amount</td><td>Action</td>
+  </tr>
+  <tr *ngFor="let transaction of _transactions, let ind = index">
+    <td>{{transaction.transactionId}}</td>
+    <td>{{transaction.time}}</td>
+    <td>{{transaction.type}}</td>
+    <td style="text-align:right">{{"$" + transaction.amount}}</td>
+    <td><button class="btn btn-danger" type="button" name="button" (click)="_remove(ind)">x</button></td>
+  </tr>
+</table>

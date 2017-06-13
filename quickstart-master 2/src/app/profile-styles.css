@@ -1,0 +1,102 @@
+.profile-div{
+  width: 96%;
+  border-width: 7px;
+  padding: 10px;
+  margin: 6px;
+  margin-right: 7%;
+}
+.div-orange{
+  background-color: rgb(255, 135, 37);
+}
+
+.div-sandal{
+  background-color: #F4F0E5;
+}
+
+.profile-div-font{
+  font-family: "Whitney SSm A", "Whitney SSm B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+  font-size: 14px;
+  font-size-adjust: auto;
+  color: white;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.profile-table{
+    table-layout: auto;
+    width: 100%;
+}
+
+th{
+  background-color: #4CAF50;
+  color: white;
+}
+
+th{
+  padding: 10px;
+  text-align: left;
+}
+td{
+  padding: 10px;
+  text-align: left;
+}
+
+tr:nth-child(odd){
+  background-color: white;
+}
+tr:nth-child(even){
+  background-color: #F4F0E5;
+}
+tr:hover{
+  background-color: #f5f5f5;
+}
+tr:last-child{
+  padding: 7px;
+  color: light red;
+}
+input[type=text], input[type=date] {
+  color:grey;
+  width: 150px;
+  padding: 6px 0px;
+  margin: 0px 1px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid grey;
+  background: transparent;
+  transition: ease-in-out, width .35s ease-in-out;
+  font-style: normal;
+  font-variant-ligatures: normal;
+  font-variant-caps: normal;
+  font-variant-numeric: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: 1em;
+  line-height: normal;
+  font-family: Arial;
+}
+
+input[type=text]:focus, input[type=date]:focus{
+  width: 152px;
+}
+
+input[type:date]{
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  -moz-appearance: none;
+}
+
+select{
+  color:grey;
+  margin: 5px;
+  width: 150px;
+  padding: 5px 5px ;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid grey;
+  height: 28px;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(images/downArrow.png) 96% / 15% no-repeat transparent;
+}
