@@ -2,7 +2,7 @@
   <div class="row logo">Bingo!</div>
   <div class="row">
     <div class="col-sm-4 col-md-4">
-      <account-form (account)="_createAcc($event)"></account-form>
+      <account-form (account)="_createAcc($event)" [errorString]="_errorString"></account-form>
     </div>
     <div class="col-sm-8 col-md-8" style="overflow:scroll;height:490px;">
       <div class="accounts row" *ngFor="let account of _accounts; let idx=index" (click)="select(idx)">

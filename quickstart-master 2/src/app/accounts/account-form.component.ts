@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
+import {Component, Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
 import {Account} from './account.model';
 
 @Component({
@@ -9,6 +9,7 @@ import {Account} from './account.model';
 
 export class AccountForm{
 
+  @Input('errorString') errorString:string;
   @Output() account = new EventEmitter<Account>();
 
   private _createAcc(bsb:any, account:any, name:any, type:any, balance:any){
