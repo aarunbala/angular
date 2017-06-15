@@ -1,16 +1,17 @@
-import { Component, ViewChild} from '@angular/core';
+import { Component, ViewChild, Optional} from '@angular/core';
 import {Account} from './accounts/account.model'
 import {Transaction} from './transactions/transaction.model'
 import {Transactions} from './transactions/transactions.component'
 import {AccountForm} from './accounts/account-form.component'
-import {AccountService} from './accounts/account.service'
+import {AccountService, ACCOUNT_SERVICE_PROVIDERS} from './accounts/account.service'
 import {TransactionService} from './transactions/transactions.service'
+import {LoggerService} from './util/logger.service'
 
 @Component({
   selector: 'login-app',
   templateUrl: `app/login.component.html`,
   styleUrls: [`app/login.css`],
-  providers: [Transactions, AccountForm, AccountService, TransactionService]
+  providers: [Transactions, AccountForm, ACCOUNT_SERVICE_PROVIDERS, TransactionService]
 })
 
 export class LoginComponent {
@@ -19,10 +20,11 @@ export class LoginComponent {
   private _errorString = "";
   private _accounts: Array<Account>;
   private _transactions: Array<Transaction>;
-  constructor(accountService:AccountService){
+  constructor(accountService:AccountService, @Optional() private loggerService:LoggerService){
     this._accountService = accountService;
     this._accounts = accountService.getAll();
     this._transactions = accountService.getAllTransactions();
+    loggerService.log("Transaction Count  : "+this._transactions.length);
   }
 
   private select(index:number){
