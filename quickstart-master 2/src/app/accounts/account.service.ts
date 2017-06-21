@@ -43,6 +43,10 @@ export class AccountService{
     return this._transactionService.getAll();
   }
 
+  public removeTransaction(index: number){
+    this._transactions.splice(index, 1);
+  }
+
   //Just to throw an error from the parent component, checking this random condition
   private _checkAccountType(account:Account):boolean{
     var result = false;

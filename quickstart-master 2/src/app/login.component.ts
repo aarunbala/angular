@@ -32,7 +32,8 @@ export class LoginComponent {
   }
 
   private _removeTrx(index:number){
-    this._transactions.splice(index, 1);
+    // this._transactions.splice(index, 1);
+    this._accountService.removeTransaction(index);
   }
 
   @ViewChild(AccountForm) form:AccountForm;
