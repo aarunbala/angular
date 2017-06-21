@@ -11,5 +11,6 @@ export class TransactionService {
 
   public getAll():Array<Transaction>{
     return this._transactions;
+    // return Promise.resolve(this._transactions);
   }
 }

@@ -16,15 +16,19 @@ import {LoggerService} from './util/logger.service'
 
 export class LoginComponent {
   private _accountService: AccountService;
+  private _loggerService: LoggerService;
   private _transactionService: TransactionService;
   private _errorString = "";
   private _accounts: Array<Account>;
   private _transactions: Array<Transaction>;
   constructor(accountService:AccountService, @Optional() private loggerService:LoggerService){
     this._accountService = accountService;
-    this._accounts = accountService.getAll();
+    // this._accounts = accountService.getAll();
+    var promise = this._accountService.getAll();
+    promise.then(accounts => this._accounts = accounts);
     this._transactions = accountService.getAllTransactions();
-    loggerService.log("Transaction Count  : "+this._transactions.length);
+    this._loggerService = loggerService;
+    // loggerService.log("Transaction Count  : "+this._transactions.length);
   }
 
   private select(index:number){
@@ -39,7 +43,13 @@ export class LoginComponent {
   @ViewChild(AccountForm) form:AccountForm;
 
   private _createAcc(account: Account){
-    this._accountService.createAccount(account);
-    this.form.resetAccountForm();
+    this._accountService.createAccount(account)
+    .then(account => {
+      this._loggerService.log("Account Created");
+      this._errorString = "";
+      this.form.resetAccountForm();
+    })
+    .catch(err => this._errorString = err);
+
   }
 }
