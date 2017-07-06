@@ -2,8 +2,8 @@
   <div class="account-form col-sm-11 col-md-11">
     <form #accountForm>
       <h3 class="title-header">Add Account</h3>
-        <div *ngIf="errorString">
-            {{errorString}}
+        <div *ngIf="errorString" class="errorstring">
+            {{ "Error !  " + errorString}}
         </div>
         <div class="row">
           <div class="col-sm-12 col-md-12">

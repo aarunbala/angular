@@ -8,16 +8,22 @@ import {LoggerService} from './../util/logger.service'
 
 export class AccountService{
   private _transactionService:TransactionService;
+  private _loggerService:LoggerService;
   private _transactions:Array<Transaction>;
   private _nextId = 5;
   private _accounts:Array<Account>;
   private _supportedAccountTypes:Array<string> = ['Savings', 'Online', 'Current'];
 
-  constructor(transactionService: TransactionService){
+  constructor(transactionService: TransactionService, loggerService: LoggerService){
     this._transactionService = transactionService;
+
     this._transactions =  transactionService.getAll();
+    // var promise = this._transactionService.getAll();
+    // promise.then(transactions => this._transactions = transactions);
+
     this._initAccounts();
-    console.log("Bingo  "+this._accounts[0].transactions.length);
+    this._loggerService = loggerService;
+    // console.log("Bingo  "+this._accounts[0].transactions.length);
     // loggerService.log(this._transactions.length+ "  ");
   }
 
@@ -35,19 +41,25 @@ export class AccountService{
     return this._transactionService;
   }
 
-  public getAll():Array<Account>{
-    return this._accounts;
+  public getAll():Promise<Array<Account>>{
+    return Promise.resolve(this._accounts);
+    // return this._accounts;
   }
 
   public getAllTransactions():Array<Transaction>{
-    return this._transactionService.getAll();
+    return this._transactions;
+    // return this._transactionService.getAll();
+  }
+
+  public removeTransaction(index: number){
+    this._transactions.splice(index, 1);
   }
 
   //Just to throw an error from the parent component, checking this random condition
   private _checkAccountType(account:Account):boolean{
     var result = false;
     for(let type of this._supportedAccountTypes){
-        console.log(type + "     "+account.type);
+        this._loggerService.log(type + "     "+account.type);
         if(account.type === type){
           result = true;
         }
@@ -56,8 +68,17 @@ export class AccountService{
   }
 
   public createAccount(account: Account){
-    account.id = this._nextId++;
-    this._accounts.push(account);
+    return new Promise((resolve, reject) => {
+      if(this._checkAccountType(account) === false){
+        this._loggerService.log("Unsupported Account Type");
+        return reject("Unsupported Account type");
+      } else{
+        account.id = this._nextId++;
+        this._loggerService.log("Account Created");
+        this._accounts.push(account);
+        resolve(account);
+      }
+    });
   }
 }
 
