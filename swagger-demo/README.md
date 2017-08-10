@@ -6,6 +6,7 @@
 3. @Api
 4. @ApiOperation
 
+http://localhost:8080/swagger-ui.html
 
 pom.xml
     <dependency>
